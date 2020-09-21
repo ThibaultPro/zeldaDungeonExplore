@@ -1,0 +1,25 @@
+<RCC>
+    <qresource prefix="/">
+        <file>Assets/mont.png</file>
+        <file>Assets/rock.png</file>
+        <file>Assets/lava.png</file>
+        <file>Assets/watero.png</file>
+        <file>Assets/grassTile.png</file>
+        <file>Assets/carreau2.png</file>
+        <file>Assets/carreau.png</file>
+        <file>Assets/buisson.png</file>
+        <file>Assets/three.png</file>
+        <file>Assets/rocher.png</file>
+        <file>Assets/Montain.png</file>
+        <file>Assets/herbe2.png</file>
+        <file>Assets/grass2.png</file>
+        <file>Assets/grass.png</file>
+        <file>Assets/FSAgrass.PNG</file>
+        <file>Assets/fleur.png</file>
+        <file>Assets/mont33.png</file>
+        <file>Assets/mont20.png</file>
+        <file>Assets/teleporterBack.png</file>
+        <file>Assets/teleporterOut.png</file>
+        <file>Assets/walkR10.png</file>
+    </qresource>
+</RCC>
