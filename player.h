@@ -1,10 +1,13 @@
-#ifndef LINK_H
-#define LINK_H
+#ifndef PLAYER_H
+#define PLAYER_H
 #include "pixmapitem.h"
+#include "levelscene.h"
 
 #include <QObject>
-#include <QGraphicsRectItem> // les objets de la scene
-class Player: public PixmapItem{
+
+
+class Player: public PixmapItem
+{
     Q_OBJECT
 public:
     Player();
@@ -18,12 +21,17 @@ public:
 
     int getlargeur() const { return this->largeur; } // définition au sein de la classe
     void setlargeur(int largeur);
-public slots:
+
+signals:
+    void goRight();
+    void goLeft();
+    void goUp();
+    void goDown();
+
 private:
     int movement ;
     int largeur ;
     int longueur ;
-
 };
 
 inline void Player::setmovement(int movement) // définition au sein de la classe (inline)
@@ -38,6 +46,5 @@ inline void Player::setlargeur(int largeur) // définition au sein de la classe 
 {
     this->largeur = largeur;
 }
-
 
 #endif // LINK_H

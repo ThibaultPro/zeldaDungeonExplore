@@ -32,10 +32,11 @@ public:
     int* generateDiffuseNoise(int R, int nWidth, int nHeight);
     void createTeleporter(int i, int nOutputWidth, LevelScene level);
 
+    LevelScene* getCurrentScene() const { return levels.last(); }
+
 private:
     View *view;
     QList<LevelScene*> levels;
-    PixmapItem *player;
 };
 
 #endif // DUNGEONGENERATOR_H

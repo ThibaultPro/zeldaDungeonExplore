@@ -105,7 +105,6 @@ void DungeonGenerator::createLevel()
             cv::Rect region_of_interest = Rect(x_top_left, y_top_left, carreauImg.rows, carreauImg.cols);
             cv::Mat image_roi = sceneImage(region_of_interest);
             carreau2Img.copyTo(image_roi);
-
         }
         else if (pixel_bw==3)
         {
@@ -254,7 +253,6 @@ cv::Mat DungeonGenerator::QImage2Mat(QImage const& src)
      cv::Mat result(src.height(),src.width(),CV_8UC3,(uchar*)src.bits(),src.bytesPerLine());
      //cv::Mat result; // deep copy just in case (my lack of knowledge with open cv)
      //cvtColor(tmp, result, 4);
-
      return result;
 }
 

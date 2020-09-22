@@ -1,5 +1,4 @@
 HEADERS += \
-    controller.h \
     dungeongenerator.h \
     gameview.h \
     levelscene.h \
@@ -7,7 +6,6 @@ HEADERS += \
     player.h
 
 SOURCES += \
-    controller.cpp \
     dungeongenerator.cpp \
     gameview.cpp \
     levelscene.cpp \

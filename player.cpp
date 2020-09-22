@@ -10,30 +10,39 @@ Player::Player() : PixmapItem(QString(":/Assets/walkR10.png"))
 {
 setFlag(QGraphicsItem::ItemIsFocusable);
 setFocus();
+setZValue(8);
 setlargeur(10);
 setlongueur(10);
 setmovement(10);
-};
-void Player::keyPressEvent(QKeyEvent *event){
+//scene()->addItem(this);
 
-    const int width = QApplication::desktop()->width();
-    const int height = QApplication::desktop()->height();
+};
+void Player::keyPressEvent(QKeyEvent *event)
+{
 
     if (event->key() == Qt::Key_Left){
         //if (pos().x() > 0)
-        setPos(x()-getmovement(),y());
+        emit goLeft();
+
+        //setPos(x() - getmovement(), y());
     }
-    else if (event->key() == Qt::Key_Right){
+    if (event->key() == Qt::Key_Right){
         //if(pos().x() + getlongueur() < height)
-        setPos(x()+getmovement(),y());
+        emit goRight();
+
+        //setPos(x() + getmovement(), y());
     }
-    else if (event->key() == Qt::Key_Up){
+    if (event->key() == Qt::Key_Up){
         //if(pos().y() - getlargeur() > -width)
-        setPos(x(),y()-getmovement());
+        emit goUp();
+
+        //setPos(x() , y()- getmovement());
     }
-    else if (event->key() == Qt::Key_Down){
+    if (event->key() == Qt::Key_Down){
         //if(pos().y()<0)
-        setPos(x(),y()+getmovement());
+        emit goDown();
+
+       // setPos(x(), y() + getmovement());
     }
     /**
     else if (event->key() == Qt::Key_Z){

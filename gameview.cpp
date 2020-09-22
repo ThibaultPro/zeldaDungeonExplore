@@ -23,7 +23,6 @@ void GraphicsView::wheelEvent(QWheelEvent *e)
         view->zoomOut(6);
 }
 
-
 View::View(const QString &name, QWidget *parent) : QFrame(parent)
 {
     setFrameStyle(Sunken | StyledPanel);

@@ -6,7 +6,6 @@
 #include <QWidget>
 
 
-
 QT_BEGIN_NAMESPACE
 class QLabel;
 class QSlider;

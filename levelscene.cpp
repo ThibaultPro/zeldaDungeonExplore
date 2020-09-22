@@ -123,12 +123,16 @@ void LevelScene::initializeObstacles()
                 teleporter->setPos((x-1)*32, (y-1)*32);
                 addItem(teleporter);
 
-                Player *player = new Player();
-                player->setPos((x-1)*32, (y-1)*32);
+                player = new Player();
 
+                player->setPos((x-1)*32, (y-1)*32);
                 addItem(player);
-                player->setFlag(QGraphicsPixmapItem::ItemIsFocusable);
-                player->setFocus();
+
+                QObject::connect(player, SIGNAL(goRight()), this, SLOT(goRight()));
+                QObject::connect(player, SIGNAL(goDown()), this, SLOT(goDown()));
+                QObject::connect(player, SIGNAL(goLeft()), this, SLOT(goLeft()));
+                QObject::connect(player, SIGNAL(goUp()), this, SLOT(goUp()));
+
             }
             else if (mapA[x][y]==8)
             {
@@ -159,15 +163,15 @@ void LevelScene::surroundingsEquals(int x, int y, int R)
 {
     mapA[x][y]=R;
 
-    mapA[x+1][y]=0;
-    mapA[x+1][y-1]=0;
-    mapA[x+1][y+1]=0;
-    mapA[x][y-1]=0;
+    mapA[x+1][y]=1;
+    mapA[x+1][y-1]=1;
+    mapA[x+1][y+1]=1;
+    mapA[x][y-1]=1;
 
-    mapA[x][y+1]=0;
-    mapA[x-1][y]=0;
-    mapA[x-1][y-1]=0;
-    mapA[x-1][y+1]=0;
+    mapA[x][y+1]=1;
+    mapA[x-1][y]=1;
+    mapA[x-1][y-1]=1;
+    mapA[x-1][y+1]=1;
 }
 
 
@@ -212,4 +216,61 @@ bool LevelScene::createTeleporterOut(int x, int y, int threshold, bool tSet)
         }
     }
     return tSet;
+}
+
+void LevelScene::goUp()
+{
+
+    int x_center = player->pos().x() + player->size().width()/2;
+    int y_center = player->pos().y() + player->size().height()/2;
+
+    int x_tile = (int)x_center/32;
+    int y_tile = (int)y_center/32;
+
+    if (mapA[x_tile][y_tile-1]== 1 or mapA[x_tile][y_tile-1]== 7 or mapA[x_tile][y_tile-1]== 8)
+    {
+        player->setPos(player->pos().x(), player->pos().y()-player->getmovement());
+    }
+}
+
+void LevelScene::goDown()
+{
+    int x_center = player->pos().x() + player->size().width()/2;
+    int y_center = player->pos().y() + player->size().height()/2;
+
+    int x_tile = (int)x_center/32;
+    int y_tile = (int)y_center/32;
+
+    if (mapA[x_tile][y_tile+1]== 1 or mapA[x_tile][y_tile+1]== 7 or mapA[x_tile][y_tile+1]== 8)
+    {
+        player->setPos(player->pos().x(), player->pos().y()+player->getmovement());
+    }
+}
+
+void LevelScene::goLeft()
+{
+    int x_center = player->pos().x() + player->size().width()/2;
+    int y_center = player->pos().y() + player->size().height()/2;
+
+    int x_tile = (int)x_center/32;
+    int y_tile = (int)y_center/32;
+
+    if (mapA[x_tile-1][y_tile]== 1 or mapA[x_tile-1][y_tile]== 7 or mapA[x_tile-1][y_tile]== 8)
+    {
+        player->setPos(player->pos().x()-player->getmovement(), player->pos().y());
+    }
+}
+
+void LevelScene::goRight()
+{
+    int x_center = player->pos().x() + player->size().width()/2;
+    int y_center = player->pos().y() + player->size().height()/2;
+
+    int x_tile = (int)x_center/32;
+    int y_tile = (int)y_center/32;
+
+    if (mapA[x_tile+1][y_tile]== 1 or mapA[x_tile+1][y_tile]== 7 or mapA[x_tile+1][y_tile]== 8)
+    {
+        player->setPos(player->pos().x()+player->getmovement(), player->pos().y());
+    }
 }

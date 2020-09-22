@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_Player_t {
-    QByteArrayData data[1];
-    char stringdata0[7];
+    QByteArrayData data[6];
+    char stringdata0[35];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -32,10 +32,15 @@ struct qt_meta_stringdata_Player_t {
     )
 static const qt_meta_stringdata_Player_t qt_meta_stringdata_Player = {
     {
-QT_MOC_LITERAL(0, 0, 6) // "Player"
+QT_MOC_LITERAL(0, 0, 6), // "Player"
+QT_MOC_LITERAL(1, 7, 7), // "goRight"
+QT_MOC_LITERAL(2, 15, 0), // ""
+QT_MOC_LITERAL(3, 16, 6), // "goLeft"
+QT_MOC_LITERAL(4, 23, 4), // "goUp"
+QT_MOC_LITERAL(5, 28, 6) // "goDown"
 
     },
-    "Player"
+    "Player\0goRight\0\0goLeft\0goUp\0goDown"
 };
 #undef QT_MOC_LITERAL
 
@@ -45,21 +50,71 @@ static const uint qt_meta_data_Player[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-       0,    0, // methods
+       4,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-       0,       // signalCount
+       4,       // signalCount
+
+ // signals: name, argc, parameters, tag, flags
+       1,    0,   34,    2, 0x06 /* Public */,
+       3,    0,   35,    2, 0x06 /* Public */,
+       4,    0,   36,    2, 0x06 /* Public */,
+       5,    0,   37,    2, 0x06 /* Public */,
+
+ // signals: parameters
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
 
        0        // eod
 };
 
 void Player::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
-    Q_UNUSED(_o);
-    Q_UNUSED(_id);
-    Q_UNUSED(_c);
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        auto *_t = static_cast<Player *>(_o);
+        Q_UNUSED(_t)
+        switch (_id) {
+        case 0: _t->goRight(); break;
+        case 1: _t->goLeft(); break;
+        case 2: _t->goUp(); break;
+        case 3: _t->goDown(); break;
+        default: ;
+        }
+    } else if (_c == QMetaObject::IndexOfMethod) {
+        int *result = reinterpret_cast<int *>(_a[0]);
+        {
+            using _t = void (Player::*)();
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&Player::goRight)) {
+                *result = 0;
+                return;
+            }
+        }
+        {
+            using _t = void (Player::*)();
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&Player::goLeft)) {
+                *result = 1;
+                return;
+            }
+        }
+        {
+            using _t = void (Player::*)();
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&Player::goUp)) {
+                *result = 2;
+                return;
+            }
+        }
+        {
+            using _t = void (Player::*)();
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&Player::goDown)) {
+                *result = 3;
+                return;
+            }
+        }
+    }
     Q_UNUSED(_a);
 }
 
@@ -89,7 +144,42 @@ void *Player::qt_metacast(const char *_clname)
 int Player::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
     _id = PixmapItem::qt_metacall(_c, _id, _a);
+    if (_id < 0)
+        return _id;
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        if (_id < 4)
+            qt_static_metacall(this, _c, _id, _a);
+        _id -= 4;
+    } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
+        if (_id < 4)
+            *reinterpret_cast<int*>(_a[0]) = -1;
+        _id -= 4;
+    }
     return _id;
+}
+
+// SIGNAL 0
+void Player::goRight()
+{
+    QMetaObject::activate(this, &staticMetaObject, 0, nullptr);
+}
+
+// SIGNAL 1
+void Player::goLeft()
+{
+    QMetaObject::activate(this, &staticMetaObject, 1, nullptr);
+}
+
+// SIGNAL 2
+void Player::goUp()
+{
+    QMetaObject::activate(this, &staticMetaObject, 2, nullptr);
+}
+
+// SIGNAL 3
+void Player::goDown()
+{
+    QMetaObject::activate(this, &staticMetaObject, 3, nullptr);
 }
 QT_WARNING_POP
 QT_END_MOC_NAMESPACE

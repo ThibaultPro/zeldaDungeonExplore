@@ -5,6 +5,8 @@
 #include <QtWidgets/QGraphicsObject>
 #include <QGraphicsPixmapItem>
 
+class Player;
+
 class PixmapItem : public QGraphicsObject
 {
 public:

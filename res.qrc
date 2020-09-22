@@ -21,5 +21,6 @@
         <file>Assets/teleporterBack.png</file>
         <file>Assets/teleporterOut.png</file>
         <file>Assets/walkR10.png</file>
+        <file>Assets/menuItem.png</file>
     </qresource>
 </RCC>
