@@ -16,6 +16,11 @@ PixmapItem::PixmapItem(const QString &fileName, QGraphicsScene *scene) : QGraphi
     scene->addItem(this);
 }
 
+void PixmapItem::changePix(const QString &fileName)
+{
+    pix = QPixmap(fileName);
+}
+
 QSizeF PixmapItem::size() const
 {
     return pix.size();

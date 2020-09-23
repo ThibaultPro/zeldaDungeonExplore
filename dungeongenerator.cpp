@@ -2,28 +2,31 @@
 #include <ctime>
 #include <cstdlib>
 
-DungeonGenerator::DungeonGenerator()
+DungeonGenerator::DungeonGenerator(QObject* parent): QObject(parent)
 {
+    view = new View("Top left view");
     createLevel();
+    level = 0;
 }
+
+DungeonGenerator::~DungeonGenerator(){}
 
 void DungeonGenerator::createLevel()
 {
+    qDebug()<<"createLevel";
+
     cv::Mat carreauImg;
     cv::Mat carreau2Img;
     cv::Mat grassImg;
     cv::Mat waterImg;
+
     cv::Mat highGrass;
     cv::Mat montainImg;
 
     int nOutputWidth = 120;
     int nOutputHeight = 68;
 
-    int **mapArr = new int *[nOutputHeight];
-    for(int i=0; i<nOutputWidth; ++i)
-    {
-        mapArr[i]= new int[nOutputWidth];
-    }
+    vector<vector<int>> mapArr(nOutputWidth, vector<int> (nOutputHeight,1));
 
     qDebug()<<nOutputWidth;
     qDebug()<<nOutputHeight;
@@ -148,6 +151,7 @@ void DungeonGenerator::createLevel()
                 mapArr[i%nOutputWidth][(int)(i/nOutputWidth)]=1;
             }
             cv::Rect region_of_interest = Rect(x_top_left, y_top_left, carreauImg.rows, carreauImg.cols);
+
             cv::Mat image_roi = sceneImage(region_of_interest);
 
             grassImg.copyTo(image_roi);
@@ -181,7 +185,6 @@ void DungeonGenerator::createLevel()
 
             grassImg.copyTo(image_roi);
         }
-
         if ((i%nOutputWidth==0) or (i%nOutputWidth==1) or (i%nOutputWidth==(nOutputWidth-2) or (i%nOutputWidth==(nOutputWidth-1) or (int)(i/nOutputWidth)==(nOutputHeight-1) or (int)(i/nOutputWidth)==(nOutputHeight-2) or (int)(i/nOutputWidth)==1) or (int)(i/nOutputWidth)==0))
         {
              mapArr[i%nOutputWidth][(int)(i/nOutputWidth)]=6;
@@ -190,12 +193,13 @@ void DungeonGenerator::createLevel()
 
     QImage *sceneBackground = new QImage;
     *sceneBackground = Mat2QImage(sceneImage);
-    int level = 1;
-    view = new View("Top left view");
+
     LevelScene *scene = new LevelScene(*sceneBackground, level, nOutputWidth, nOutputHeight, mapArr);
 
+    level+=1;
     levels.append(scene);
-    //LevelScene *scene2 = &levels.last();
+
+    QObject::connect(levels.last(), SIGNAL(reachedOut()), this, SLOT(createLevel()));
 
     view->view()->setScene(levels.last());
     view->show();
@@ -273,3 +277,4 @@ int* DungeonGenerator::generateDiffuseNoise(int R, int nWidth, int nHeight)
     }
     return vec;
 }
+

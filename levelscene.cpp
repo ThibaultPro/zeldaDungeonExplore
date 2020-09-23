@@ -9,10 +9,12 @@
 #include <QPainter>
 #include <iostream>
 #include <sstream>
+#include <QTimer>
 
 #include "player.h"
+#include "enemy.h"
 
-LevelScene::LevelScene(QImage backgroundBrush, int level, int nOutputWidth, int nOutputHeight, int **mapArr): QGraphicsScene()
+LevelScene::LevelScene(QImage backgroundBrush, int level, int nOutputWidth, int nOutputHeight, vector<vector<int>> mapArr): QGraphicsScene()
 {
     setSceneRect(0,0,3840,2168);
     setBackgroundBrush(QBrush(backgroundBrush));
@@ -20,7 +22,12 @@ LevelScene::LevelScene(QImage backgroundBrush, int level, int nOutputWidth, int 
     sceneHeight = nOutputHeight;
     mapA = mapArr;
     initializeObstacles();
-    currentLevel = level;
+    currentLevel = &level;
+
+    QTimer * timer  = new QTimer();
+    QObject::connect(timer,SIGNAL(timeout()), this,SLOT(spawn()));
+    timer ->start(20000);
+
 }
 
 void LevelScene::initializeObstacles()
@@ -95,7 +102,6 @@ void LevelScene::initializeObstacles()
                 QGraphicsPixmapItem *obstacle = new QGraphicsPixmapItem(QPixmap::fromImage(*buisson));
                 obstacle->setPos(x*32, y*32);
                 addItem(obstacle);
-
             }
             else if (mapA[x][y]==6)
             {
@@ -108,7 +114,7 @@ void LevelScene::initializeObstacles()
                 std::string temp0;
                 std::ostringstream temp1;
 
-                temp1 <<"N :"<<(int)(currentLevel);
+                temp1 <<"N :"<<currentLevel;
                 temp0 = temp1.str();
 
                 QImage *telBack = new QImage;
@@ -127,19 +133,20 @@ void LevelScene::initializeObstacles()
 
                 player->setPos((x-1)*32, (y-1)*32);
                 addItem(player);
+                player->setFlag(QGraphicsItem::ItemIsFocusable);
+                player->setFocus();
 
                 QObject::connect(player, SIGNAL(goRight()), this, SLOT(goRight()));
                 QObject::connect(player, SIGNAL(goDown()), this, SLOT(goDown()));
                 QObject::connect(player, SIGNAL(goLeft()), this, SLOT(goLeft()));
                 QObject::connect(player, SIGNAL(goUp()), this, SLOT(goUp()));
-
             }
             else if (mapA[x][y]==8)
             {
                 std::string temp0;
                 std::ostringstream temp1;
 
-                temp1 <<"N :"<<(int)(currentLevel + 1);
+                temp1 <<"N :"<<(currentLevel + 1);
                 temp0 = temp1.str();
 
                 QImage *telOut = new QImage;
@@ -220,9 +227,8 @@ bool LevelScene::createTeleporterOut(int x, int y, int threshold, bool tSet)
 
 void LevelScene::goUp()
 {
-
     int x_center = player->pos().x() + player->size().width()/2;
-    int y_center = player->pos().y() + player->size().height()/2;
+    int y_center = player->pos().y() + player->size().height()/2 + 10;
 
     int x_tile = (int)x_center/32;
     int y_tile = (int)y_center/32;
@@ -230,13 +236,17 @@ void LevelScene::goUp()
     if (mapA[x_tile][y_tile-1]== 1 or mapA[x_tile][y_tile-1]== 7 or mapA[x_tile][y_tile-1]== 8)
     {
         player->setPos(player->pos().x(), player->pos().y()-player->getmovement());
+        if (mapA[x_tile][y_tile-1]==8)
+        {
+            emit reachedOut();
+        }
     }
 }
 
 void LevelScene::goDown()
 {
     int x_center = player->pos().x() + player->size().width()/2;
-    int y_center = player->pos().y() + player->size().height()/2;
+    int y_center = player->pos().y() + player->size().height()/2 + 10;
 
     int x_tile = (int)x_center/32;
     int y_tile = (int)y_center/32;
@@ -244,13 +254,17 @@ void LevelScene::goDown()
     if (mapA[x_tile][y_tile+1]== 1 or mapA[x_tile][y_tile+1]== 7 or mapA[x_tile][y_tile+1]== 8)
     {
         player->setPos(player->pos().x(), player->pos().y()+player->getmovement());
+        if (mapA[x_tile][y_tile+1]==8)
+        {
+            emit reachedOut();
+        }
     }
 }
 
 void LevelScene::goLeft()
 {
-    int x_center = player->pos().x() + player->size().width()/2;
-    int y_center = player->pos().y() + player->size().height()/2;
+    int x_center = player->pos().x() + player->size().width()/2+10;
+    int y_center = player->pos().y() + player->size().height()/2 + 10;
 
     int x_tile = (int)x_center/32;
     int y_tile = (int)y_center/32;
@@ -258,13 +272,17 @@ void LevelScene::goLeft()
     if (mapA[x_tile-1][y_tile]== 1 or mapA[x_tile-1][y_tile]== 7 or mapA[x_tile-1][y_tile]== 8)
     {
         player->setPos(player->pos().x()-player->getmovement(), player->pos().y());
+        if (mapA[x_tile-1][y_tile]==8)
+        {
+            emit reachedOut();
+        }
     }
 }
 
 void LevelScene::goRight()
 {
-    int x_center = player->pos().x() + player->size().width()/2;
-    int y_center = player->pos().y() + player->size().height()/2;
+    int x_center = player->pos().x() + player->size().width()/2-20;
+    int y_center = player->pos().y() + player->size().height()/2 + 10;
 
     int x_tile = (int)x_center/32;
     int y_tile = (int)y_center/32;
@@ -272,5 +290,15 @@ void LevelScene::goRight()
     if (mapA[x_tile+1][y_tile]== 1 or mapA[x_tile+1][y_tile]== 7 or mapA[x_tile+1][y_tile]== 8)
     {
         player->setPos(player->pos().x()+player->getmovement(), player->pos().y());
+        if (mapA[x_tile+1][y_tile]==8)
+        {
+            emit reachedOut();
+        }
     }
 }
+
+void LevelScene::spawn(){
+    enemy * mechant = new enemy();
+    this->addItem(mechant);
+}
+

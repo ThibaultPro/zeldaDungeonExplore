@@ -22,5 +22,23 @@
         <file>Assets/teleporterOut.png</file>
         <file>Assets/walkR10.png</file>
         <file>Assets/menuItem.png</file>
+        <file>Assets/cyclopeDown.png</file>
+        <file>Assets/cyclopeUp.png</file>
+        <file>Assets/cyclopeR4.png</file>
+        <file>Assets/cyclopeR3.png</file>
+        <file>Assets/cyclopeR2.png</file>
+        <file>Assets/cyclopeR1.png</file>
+        <file>Assets/walkU1.png</file>
+        <file>Assets/walkR1.png</file>
+        <file>Assets/walkL1.png</file>
+        <file>Assets/walkD1.png</file>
+        <file>Assets/cyclopeL4.png</file>
+        <file>Assets/cyclopeL3.png</file>
+        <file>Assets/cyclopeL2.png</file>
+        <file>Assets/cyclopeL1.png</file>
+        <file>Assets/swordU.png</file>
+        <file>Assets/swordR.png</file>
+        <file>Assets/swordL.png</file>
+        <file>Assets/swordD.png</file>
     </qresource>
 </RCC>

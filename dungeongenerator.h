@@ -3,6 +3,7 @@
 #include <QImage>
 #include <QDebug>
 #include <QList>
+#include <QObject>
 
 #include <opencv4/opencv2/highgui/highgui.hpp>
 #include <opencv4/opencv2/core/core.hpp>
@@ -21,22 +22,28 @@ using namespace std;
 using namespace cv;
 
 
-class DungeonGenerator
+class DungeonGenerator: public QObject
 {
+    Q_OBJECT
 public:
-    DungeonGenerator();
+    explicit DungeonGenerator(QObject* parent = 0);
+    ~DungeonGenerator();;
     void generatePerlinNoise(int nOutputWidth, int nOutputHeight, float *fNoiseSeed2D, int nOctaveCount, float fScalingBias, float *fPerlinNoise2D);
     QImage Mat2QImage(cv::Mat const& src);
     cv::Mat QImage2Mat(QImage const& src);
-    void createLevel();
+
     int* generateDiffuseNoise(int R, int nWidth, int nHeight);
     void createTeleporter(int i, int nOutputWidth, LevelScene level);
 
     LevelScene* getCurrentScene() const { return levels.last(); }
+public slots:
+    void createLevel();
 
 private:
     View *view;
     QList<LevelScene*> levels;
+    int level;
+    QPoint player;
 };
 
 #endif // DUNGEONGENERATOR_H

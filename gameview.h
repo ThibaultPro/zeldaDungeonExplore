@@ -36,6 +36,8 @@ public:
 public slots:
     void zoomIn(int level = 1);
     void zoomOut(int level = 1);
+    void xValueChanged(int value);
+    void yValueChanged(int value);
 
 private slots:
     void resetView();
@@ -57,6 +59,7 @@ private:
     QToolButton *resetButton;
     QSlider *zoomSlider;
     QSlider *rotateSlider;
+    QPoint player;
 };
 
 

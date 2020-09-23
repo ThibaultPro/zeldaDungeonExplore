@@ -12,6 +12,7 @@ class PixmapItem : public QGraphicsObject
 public:
     PixmapItem(const QString &fileName, QGraphicsItem * parent = 0);
     PixmapItem(const QString &fileName, QGraphicsScene *scene);
+    void changePix(const QString &fileName);
     QSizeF size() const;
     QRectF boundingRect() const override;
     void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget *) override;
