@@ -830,7 +830,25 @@ qrc_res.cpp: res.qrc \
 		Assets/menuItem.png \
 		Assets/cyclopeR1.png \
 		Assets/three.png \
-		Assets/walkU1.png
+		Assets/walkU1.png \
+		Assets/explosion/step7.png \
+		Assets/explosion/step2.png \
+		Assets/explosion/step6.png \
+		Assets/explosion/step1.png \
+		Assets/explosion/step5.png \
+		Assets/explosion/step4.png \
+		Assets/explosion/step8.png \
+		Assets/explosion/step3.png \
+		Assets/teleportation/step7.png \
+		Assets/teleportation/step2.png \
+		Assets/teleportation/step6.png \
+		Assets/teleportation/step1.png \
+		Assets/teleportation/step5.png \
+		Assets/teleportation/step10.png \
+		Assets/teleportation/step9.png \
+		Assets/teleportation/step4.png \
+		Assets/teleportation/step8.png \
+		Assets/teleportation/step3.png
 	/home/iterator/Qt/5.15.0/gcc_64/bin/rcc -name res res.qrc -o qrc_res.cpp
 
 compiler_moc_predefs_make_all: moc_predefs.h
@@ -969,6 +987,14 @@ moc_dungeongenerator.cpp: dungeongenerator.h \
 		../../../Qt/5.15.0/gcc_64/include/QtWidgets/qgraphicsitem.h \
 		../../../Qt/5.15.0/gcc_64/include/QtGui/qpainterpath.h \
 		../../../Qt/5.15.0/gcc_64/include/QtWidgets/QGraphicsPixmapItem \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/QSequentialAnimationGroup \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/qsequentialanimationgroup.h \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/qanimationgroup.h \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/qabstractanimation.h \
+		enemy.h \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/QTimer \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/qtimer.h \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/qbasictimer.h \
 		moc_predefs.h \
 		../../../Qt/5.15.0/gcc_64/bin/moc
 	/home/iterator/Qt/5.15.0/gcc_64/bin/moc $(DEFINES) --include /home/iterator/Projets/Qt/zeldaDungeonExplorer/moc_predefs.h -I/home/iterator/Qt/5.15.0/gcc_64/mkspecs/linux-g++ -I/home/iterator/Projets/Qt/zeldaDungeonExplorer -I/usr/include/opencv4/opencv -I/usr/include/opencv4 -I/home/iterator/Qt/5.15.0/gcc_64/include -I/home/iterator/Qt/5.15.0/gcc_64/include/QtWidgets -I/home/iterator/Qt/5.15.0/gcc_64/include/QtMultimedia -I/home/iterator/Qt/5.15.0/gcc_64/include/QtGui -I/home/iterator/Qt/5.15.0/gcc_64/include/QtNetwork -I/home/iterator/Qt/5.15.0/gcc_64/include/QtCore -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include dungeongenerator.h -o moc_dungeongenerator.cpp
@@ -1063,7 +1089,40 @@ moc_enemy.cpp: enemy.h \
 		../../../Qt/5.15.0/gcc_64/include/QtGui/qrgba64.h \
 		../../../Qt/5.15.0/gcc_64/include/QtGui/qimage.h \
 		../../../Qt/5.15.0/gcc_64/include/QtGui/qpixelformat.h \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/QSequentialAnimationGroup \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/qsequentialanimationgroup.h \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/qanimationgroup.h \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/qabstractanimation.h \
 		../../../Qt/5.15.0/gcc_64/include/QtCore/QObject \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/QTimer \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/qtimer.h \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/qbasictimer.h \
+		levelscene.h \
+		../../../Qt/5.15.0/gcc_64/include/QtWidgets/QGraphicsScene \
+		../../../Qt/5.15.0/gcc_64/include/QtWidgets/qgraphicsscene.h \
+		../../../Qt/5.15.0/gcc_64/include/QtGui/qbrush.h \
+		../../../Qt/5.15.0/gcc_64/include/QtGui/qfont.h \
+		../../../Qt/5.15.0/gcc_64/include/QtGui/qpen.h \
+		../../../Qt/5.15.0/gcc_64/include/QtWidgets/QWidget \
+		../../../Qt/5.15.0/gcc_64/include/QtWidgets/qwidget.h \
+		../../../Qt/5.15.0/gcc_64/include/QtGui/qpalette.h \
+		../../../Qt/5.15.0/gcc_64/include/QtGui/qfontmetrics.h \
+		../../../Qt/5.15.0/gcc_64/include/QtGui/qfontinfo.h \
+		../../../Qt/5.15.0/gcc_64/include/QtWidgets/qsizepolicy.h \
+		../../../Qt/5.15.0/gcc_64/include/QtGui/qcursor.h \
+		../../../Qt/5.15.0/gcc_64/include/QtGui/qkeysequence.h \
+		../../../Qt/5.15.0/gcc_64/include/QtGui/qevent.h \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/qurl.h \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/qurlquery.h \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/qfile.h \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/qfiledevice.h \
+		../../../Qt/5.15.0/gcc_64/include/QtGui/qvector2d.h \
+		../../../Qt/5.15.0/gcc_64/include/QtGui/qtouchdevice.h \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/QList \
+		player.h \
+		pixmapitem.h \
+		../../../Qt/5.15.0/gcc_64/include/QtWidgets/QGraphicsObject \
+		enemy.h \
 		moc_predefs.h \
 		../../../Qt/5.15.0/gcc_64/bin/moc
 	/home/iterator/Qt/5.15.0/gcc_64/bin/moc $(DEFINES) --include /home/iterator/Projets/Qt/zeldaDungeonExplorer/moc_predefs.h -I/home/iterator/Qt/5.15.0/gcc_64/mkspecs/linux-g++ -I/home/iterator/Projets/Qt/zeldaDungeonExplorer -I/usr/include/opencv4/opencv -I/usr/include/opencv4 -I/home/iterator/Qt/5.15.0/gcc_64/include -I/home/iterator/Qt/5.15.0/gcc_64/include/QtWidgets -I/home/iterator/Qt/5.15.0/gcc_64/include/QtMultimedia -I/home/iterator/Qt/5.15.0/gcc_64/include/QtGui -I/home/iterator/Qt/5.15.0/gcc_64/include/QtNetwork -I/home/iterator/Qt/5.15.0/gcc_64/include/QtCore -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include enemy.h -o moc_enemy.cpp
@@ -1176,6 +1235,7 @@ moc_levelscene.cpp: levelscene.h \
 		../../../Qt/5.15.0/gcc_64/include/QtCore/qfiledevice.h \
 		../../../Qt/5.15.0/gcc_64/include/QtGui/qvector2d.h \
 		../../../Qt/5.15.0/gcc_64/include/QtGui/qtouchdevice.h \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/QList \
 		player.h \
 		pixmapitem.h \
 		../../../Qt/5.15.0/gcc_64/include/QtWidgets/QGraphicsObject \
@@ -1183,6 +1243,14 @@ moc_levelscene.cpp: levelscene.h \
 		../../../Qt/5.15.0/gcc_64/include/QtGui/qpainterpath.h \
 		../../../Qt/5.15.0/gcc_64/include/QtWidgets/QGraphicsPixmapItem \
 		levelscene.h \
+		enemy.h \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/QSequentialAnimationGroup \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/qsequentialanimationgroup.h \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/qanimationgroup.h \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/qabstractanimation.h \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/QTimer \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/qtimer.h \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/qbasictimer.h \
 		moc_predefs.h \
 		../../../Qt/5.15.0/gcc_64/bin/moc
 	/home/iterator/Qt/5.15.0/gcc_64/bin/moc $(DEFINES) --include /home/iterator/Projets/Qt/zeldaDungeonExplorer/moc_predefs.h -I/home/iterator/Qt/5.15.0/gcc_64/mkspecs/linux-g++ -I/home/iterator/Projets/Qt/zeldaDungeonExplorer -I/usr/include/opencv4/opencv -I/usr/include/opencv4 -I/home/iterator/Qt/5.15.0/gcc_64/include -I/home/iterator/Qt/5.15.0/gcc_64/include/QtWidgets -I/home/iterator/Qt/5.15.0/gcc_64/include/QtMultimedia -I/home/iterator/Qt/5.15.0/gcc_64/include/QtGui -I/home/iterator/Qt/5.15.0/gcc_64/include/QtNetwork -I/home/iterator/Qt/5.15.0/gcc_64/include/QtCore -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include levelscene.h -o moc_levelscene.cpp
@@ -1301,7 +1369,16 @@ moc_player.cpp: player.h \
 		../../../Qt/5.15.0/gcc_64/include/QtCore/qfiledevice.h \
 		../../../Qt/5.15.0/gcc_64/include/QtGui/qvector2d.h \
 		../../../Qt/5.15.0/gcc_64/include/QtGui/qtouchdevice.h \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/QList \
 		player.h \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/QSequentialAnimationGroup \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/qsequentialanimationgroup.h \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/qanimationgroup.h \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/qabstractanimation.h \
+		enemy.h \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/QTimer \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/qtimer.h \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/qbasictimer.h \
 		moc_predefs.h \
 		../../../Qt/5.15.0/gcc_64/bin/moc
 	/home/iterator/Qt/5.15.0/gcc_64/bin/moc $(DEFINES) --include /home/iterator/Projets/Qt/zeldaDungeonExplorer/moc_predefs.h -I/home/iterator/Qt/5.15.0/gcc_64/mkspecs/linux-g++ -I/home/iterator/Projets/Qt/zeldaDungeonExplorer -I/usr/include/opencv4/opencv -I/usr/include/opencv4 -I/home/iterator/Qt/5.15.0/gcc_64/include -I/home/iterator/Qt/5.15.0/gcc_64/include/QtWidgets -I/home/iterator/Qt/5.15.0/gcc_64/include/QtMultimedia -I/home/iterator/Qt/5.15.0/gcc_64/include/QtGui -I/home/iterator/Qt/5.15.0/gcc_64/include/QtNetwork -I/home/iterator/Qt/5.15.0/gcc_64/include/QtCore -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include player.h -o moc_player.cpp
@@ -1544,7 +1621,15 @@ dungeongenerator.o: dungeongenerator.cpp dungeongenerator.h \
 		../../../Qt/5.15.0/gcc_64/include/QtWidgets/QGraphicsObject \
 		../../../Qt/5.15.0/gcc_64/include/QtWidgets/qgraphicsitem.h \
 		../../../Qt/5.15.0/gcc_64/include/QtGui/qpainterpath.h \
-		../../../Qt/5.15.0/gcc_64/include/QtWidgets/QGraphicsPixmapItem
+		../../../Qt/5.15.0/gcc_64/include/QtWidgets/QGraphicsPixmapItem \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/QSequentialAnimationGroup \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/qsequentialanimationgroup.h \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/qanimationgroup.h \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/qabstractanimation.h \
+		enemy.h \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/QTimer \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/qtimer.h \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/qbasictimer.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o dungeongenerator.o dungeongenerator.cpp
 
 enemy.o: enemy.cpp enemy.h \
@@ -1637,10 +1722,14 @@ enemy.o: enemy.cpp enemy.h \
 		../../../Qt/5.15.0/gcc_64/include/QtGui/qrgba64.h \
 		../../../Qt/5.15.0/gcc_64/include/QtGui/qimage.h \
 		../../../Qt/5.15.0/gcc_64/include/QtGui/qpixelformat.h \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/QSequentialAnimationGroup \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/qsequentialanimationgroup.h \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/qanimationgroup.h \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/qabstractanimation.h \
 		../../../Qt/5.15.0/gcc_64/include/QtCore/QObject \
-		player.h \
-		pixmapitem.h \
-		../../../Qt/5.15.0/gcc_64/include/QtWidgets/QGraphicsObject \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/QTimer \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/qtimer.h \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/qbasictimer.h \
 		levelscene.h \
 		../../../Qt/5.15.0/gcc_64/include/QtWidgets/QGraphicsScene \
 		../../../Qt/5.15.0/gcc_64/include/QtWidgets/qgraphicsscene.h \
@@ -1662,10 +1751,10 @@ enemy.o: enemy.cpp enemy.h \
 		../../../Qt/5.15.0/gcc_64/include/QtCore/qfiledevice.h \
 		../../../Qt/5.15.0/gcc_64/include/QtGui/qvector2d.h \
 		../../../Qt/5.15.0/gcc_64/include/QtGui/qtouchdevice.h \
-		../../../Qt/5.15.0/gcc_64/include/QtCore/QTimer \
-		../../../Qt/5.15.0/gcc_64/include/QtCore/qtimer.h \
-		../../../Qt/5.15.0/gcc_64/include/QtCore/qbasictimer.h \
 		../../../Qt/5.15.0/gcc_64/include/QtCore/QList \
+		player.h \
+		pixmapitem.h \
+		../../../Qt/5.15.0/gcc_64/include/QtWidgets/QGraphicsObject \
 		../../../Qt/5.15.0/gcc_64/include/QtCore/QDebug \
 		../../../Qt/5.15.0/gcc_64/include/QtWidgets/QApplication \
 		../../../Qt/5.15.0/gcc_64/include/QtWidgets/qapplication.h \
@@ -1674,7 +1763,13 @@ enemy.o: enemy.cpp enemy.h \
 		../../../Qt/5.15.0/gcc_64/include/QtWidgets/qdesktopwidget.h \
 		../../../Qt/5.15.0/gcc_64/include/QtGui/qguiapplication.h \
 		../../../Qt/5.15.0/gcc_64/include/QtGui/qinputmethod.h \
-		../../../Qt/5.15.0/gcc_64/include/QtWidgets/QDesktopWidget
+		../../../Qt/5.15.0/gcc_64/include/QtWidgets/QDesktopWidget \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/QPropertyAnimation \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/qpropertyanimation.h \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/qvariantanimation.h \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/qeasingcurve.h \
+		sword.h \
+		../../../Qt/5.15.0/gcc_64/include/QtWidgets/QGraphicsRectItem
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o enemy.o enemy.cpp
 
 gameview.o: gameview.cpp gameview.h \
@@ -1825,7 +1920,16 @@ gameview.o: gameview.cpp gameview.h \
 		pixmapitem.h \
 		../../../Qt/5.15.0/gcc_64/include/QtWidgets/QGraphicsObject \
 		../../../Qt/5.15.0/gcc_64/include/QtWidgets/QGraphicsPixmapItem \
-		levelscene.h
+		levelscene.h \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/QList \
+		enemy.h \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/QSequentialAnimationGroup \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/qsequentialanimationgroup.h \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/qanimationgroup.h \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/qabstractanimation.h \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/QTimer \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/qtimer.h \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/qbasictimer.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o gameview.o gameview.cpp
 
 levelscene.o: levelscene.cpp levelscene.h \
@@ -1936,12 +2040,21 @@ levelscene.o: levelscene.cpp levelscene.h \
 		../../../Qt/5.15.0/gcc_64/include/QtCore/qfiledevice.h \
 		../../../Qt/5.15.0/gcc_64/include/QtGui/qvector2d.h \
 		../../../Qt/5.15.0/gcc_64/include/QtGui/qtouchdevice.h \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/QList \
 		player.h \
 		pixmapitem.h \
 		../../../Qt/5.15.0/gcc_64/include/QtWidgets/QGraphicsObject \
 		../../../Qt/5.15.0/gcc_64/include/QtWidgets/qgraphicsitem.h \
 		../../../Qt/5.15.0/gcc_64/include/QtGui/qpainterpath.h \
 		../../../Qt/5.15.0/gcc_64/include/QtWidgets/QGraphicsPixmapItem \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/QSequentialAnimationGroup \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/qsequentialanimationgroup.h \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/qanimationgroup.h \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/qabstractanimation.h \
+		enemy.h \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/QTimer \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/qtimer.h \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/qbasictimer.h \
 		../../../Qt/5.15.0/gcc_64/include/QtGui/QBrush \
 		../../../Qt/5.15.0/gcc_64/include/QtGui/QImage \
 		../../../Qt/5.15.0/gcc_64/include/QtWidgets/QGraphicsItem \
@@ -1949,7 +2062,8 @@ levelscene.o: levelscene.cpp levelscene.h \
 		../../../Qt/5.15.0/gcc_64/include/QtCore/QDebug \
 		../../../Qt/5.15.0/gcc_64/include/QtGui/QPainter \
 		../../../Qt/5.15.0/gcc_64/include/QtGui/qpainter.h \
-		../../../Qt/5.15.0/gcc_64/include/QtGui/qtextoption.h
+		../../../Qt/5.15.0/gcc_64/include/QtGui/qtextoption.h \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/qmath.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o levelscene.o levelscene.cpp
 
 main.o: main.cpp main.h \
@@ -2089,7 +2203,15 @@ main.o: main.cpp main.h \
 		../../../Qt/5.15.0/gcc_64/include/QtWidgets/QGraphicsObject \
 		../../../Qt/5.15.0/gcc_64/include/QtWidgets/qgraphicsitem.h \
 		../../../Qt/5.15.0/gcc_64/include/QtGui/qpainterpath.h \
-		../../../Qt/5.15.0/gcc_64/include/QtWidgets/QGraphicsPixmapItem
+		../../../Qt/5.15.0/gcc_64/include/QtWidgets/QGraphicsPixmapItem \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/QSequentialAnimationGroup \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/qsequentialanimationgroup.h \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/qanimationgroup.h \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/qabstractanimation.h \
+		enemy.h \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/QTimer \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/qtimer.h \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/qbasictimer.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o main.cpp
 
 pixmapitem.o: pixmapitem.cpp pixmapitem.h \
@@ -2311,6 +2433,15 @@ player.o: player.cpp player.h \
 		../../../Qt/5.15.0/gcc_64/include/QtCore/qfiledevice.h \
 		../../../Qt/5.15.0/gcc_64/include/QtGui/qvector2d.h \
 		../../../Qt/5.15.0/gcc_64/include/QtGui/qtouchdevice.h \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/QList \
+		enemy.h \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/QSequentialAnimationGroup \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/qsequentialanimationgroup.h \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/qanimationgroup.h \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/qabstractanimation.h \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/QTimer \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/qtimer.h \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/qbasictimer.h \
 		sword.h \
 		../../../Qt/5.15.0/gcc_64/include/QtWidgets/QGraphicsRectItem \
 		../../../Qt/5.15.0/gcc_64/include/QtGui/QtEvents \
@@ -2321,7 +2452,11 @@ player.o: player.cpp player.h \
 		../../../Qt/5.15.0/gcc_64/include/QtWidgets/qdesktopwidget.h \
 		../../../Qt/5.15.0/gcc_64/include/QtGui/qguiapplication.h \
 		../../../Qt/5.15.0/gcc_64/include/QtGui/qinputmethod.h \
-		../../../Qt/5.15.0/gcc_64/include/QtWidgets/QDesktopWidget
+		../../../Qt/5.15.0/gcc_64/include/QtWidgets/QDesktopWidget \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/QPropertyAnimation \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/qpropertyanimation.h \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/qvariantanimation.h \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/qeasingcurve.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o player.o player.cpp
 
 sword.o: sword.cpp sword.h \
@@ -2425,7 +2560,31 @@ sword.o: sword.cpp sword.h \
 		../../../Qt/5.15.0/gcc_64/include/QtGui/qbrush.h \
 		../../../Qt/5.15.0/gcc_64/include/QtGui/qfont.h \
 		../../../Qt/5.15.0/gcc_64/include/QtGui/qpen.h \
-		../../../Qt/5.15.0/gcc_64/include/QtCore/QDebug
+		../../../Qt/5.15.0/gcc_64/include/QtCore/QDebug \
+		player.h \
+		pixmapitem.h \
+		../../../Qt/5.15.0/gcc_64/include/QtWidgets/QGraphicsObject \
+		levelscene.h \
+		../../../Qt/5.15.0/gcc_64/include/QtWidgets/QWidget \
+		../../../Qt/5.15.0/gcc_64/include/QtWidgets/qwidget.h \
+		../../../Qt/5.15.0/gcc_64/include/QtGui/qpalette.h \
+		../../../Qt/5.15.0/gcc_64/include/QtGui/qfontmetrics.h \
+		../../../Qt/5.15.0/gcc_64/include/QtGui/qfontinfo.h \
+		../../../Qt/5.15.0/gcc_64/include/QtWidgets/qsizepolicy.h \
+		../../../Qt/5.15.0/gcc_64/include/QtGui/qcursor.h \
+		../../../Qt/5.15.0/gcc_64/include/QtGui/qkeysequence.h \
+		../../../Qt/5.15.0/gcc_64/include/QtGui/qevent.h \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/qurl.h \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/qurlquery.h \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/qfile.h \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/qfiledevice.h \
+		../../../Qt/5.15.0/gcc_64/include/QtGui/qvector2d.h \
+		../../../Qt/5.15.0/gcc_64/include/QtGui/qtouchdevice.h \
+		enemy.h \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/QSequentialAnimationGroup \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/qsequentialanimationgroup.h \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/qanimationgroup.h \
+		../../../Qt/5.15.0/gcc_64/include/QtCore/qabstractanimation.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o sword.o sword.cpp
 
 qrc_res.o: qrc_res.cpp 

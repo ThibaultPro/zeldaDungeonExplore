@@ -40,5 +40,23 @@
         <file>Assets/swordR.png</file>
         <file>Assets/swordL.png</file>
         <file>Assets/swordD.png</file>
+        <file>Assets/explosion/step8.png</file>
+        <file>Assets/explosion/step7.png</file>
+        <file>Assets/explosion/step6.png</file>
+        <file>Assets/explosion/step5.png</file>
+        <file>Assets/explosion/step4.png</file>
+        <file>Assets/explosion/step3.png</file>
+        <file>Assets/explosion/step2.png</file>
+        <file>Assets/explosion/step1.png</file>
+        <file>Assets/teleportation/step1.png</file>
+        <file>Assets/teleportation/step2.png</file>
+        <file>Assets/teleportation/step3.png</file>
+        <file>Assets/teleportation/step4.png</file>
+        <file>Assets/teleportation/step5.png</file>
+        <file>Assets/teleportation/step6.png</file>
+        <file>Assets/teleportation/step7.png</file>
+        <file>Assets/teleportation/step8.png</file>
+        <file>Assets/teleportation/step10.png</file>
+        <file>Assets/teleportation/step9.png</file>
     </qresource>
 </RCC>

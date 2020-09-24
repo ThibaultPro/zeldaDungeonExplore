@@ -8,6 +8,10 @@
 #include <opencv4/opencv2/highgui/highgui.hpp>
 #include <opencv4/opencv2/core/core.hpp>
 #include <opencv4/opencv2/imgproc.hpp>
+#include <opencv2/imgproc.hpp>
+#include <opencv2/core.hpp>
+#include <opencv2/imgcodecs.hpp>
+#include <opencv4/opencv2/imgproc/imgproc.hpp>
 
 #include <opencv4/opencv2/imgcodecs.hpp>
 
@@ -27,7 +31,7 @@ class DungeonGenerator: public QObject
     Q_OBJECT
 public:
     explicit DungeonGenerator(QObject* parent = 0);
-    ~DungeonGenerator();;
+    ~DungeonGenerator();
     void generatePerlinNoise(int nOutputWidth, int nOutputHeight, float *fNoiseSeed2D, int nOctaveCount, float fScalingBias, float *fPerlinNoise2D);
     QImage Mat2QImage(cv::Mat const& src);
     cv::Mat QImage2Mat(QImage const& src);
@@ -36,6 +40,7 @@ public:
     void createTeleporter(int i, int nOutputWidth, LevelScene level);
 
     LevelScene* getCurrentScene() const { return levels.last(); }
+
 public slots:
     void createLevel();
 

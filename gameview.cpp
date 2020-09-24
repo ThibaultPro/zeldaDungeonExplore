@@ -29,10 +29,21 @@ void GraphicsView::wheelEvent(QWheelEvent *e)
     {
         if(typeid (*(items[i]))==typeid(Player))
         {
-            this->centerOn(items[i]->pos());
+            centerOn(items[i]->pos());
         }
     }
+}
 
+void GraphicsView::mouseMoveEvent(QMouseEvent *e)
+{
+    QList<QGraphicsItem*> items = scene()->items();
+    for (int i = 0; i<items.size(); i++)
+    {
+        if(typeid (*(items[i]))==typeid(Player))
+        {
+            centerOn(items[i]->pos());
+        }
+    }
 }
 
 View::View(const QString &name, QWidget *parent) : QFrame(parent)
@@ -94,6 +105,7 @@ View::View(const QString &name, QWidget *parent) : QFrame(parent)
     connect(zoomSlider, &QAbstractSlider::valueChanged, this, &View::setupMatrix);
 
     setupMatrix();
+
 }
 
 QGraphicsView *View::view() const
@@ -136,10 +148,19 @@ void View::togglePointerMode()
 
 void View::zoomIn(int level)
 {
-     zoomSlider->setValue(zoomSlider->value() + level);
+    if ((zoomSlider->value() + level)<=280)
+    {
+        zoomSlider->setValue(zoomSlider->value() + level);
+    }
 }
 
 void View::zoomOut(int level)
 {
-    zoomSlider->setValue(zoomSlider->value() - level);
+    if((zoomSlider->value() - level)>=202)
+    {
+        zoomSlider->setValue(zoomSlider->value() - level);
+    }
 }
+
+
+

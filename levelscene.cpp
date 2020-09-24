@@ -10,6 +10,8 @@
 #include <iostream>
 #include <sstream>
 #include <QTimer>
+#include <qmath.h>
+#include <math.h>
 
 #include "player.h"
 #include "enemy.h"
@@ -21,12 +23,17 @@ LevelScene::LevelScene(QImage backgroundBrush, int level, int nOutputWidth, int 
     sceneWidth = nOutputWidth;
     sceneHeight = nOutputHeight;
     mapA = mapArr;
+    currentLevel = level;
     initializeObstacles();
-    currentLevel = &level;
+
 
     QTimer * timer  = new QTimer();
     QObject::connect(timer,SIGNAL(timeout()), this,SLOT(spawn()));
-    timer ->start(20000);
+    timer ->start(2000);
+
+    QTimer *timer2 = new QTimer(this);
+    connect(timer2,SIGNAL(timeout()),this,SLOT(move()));
+    timer2->start(50);
 
 }
 
@@ -238,9 +245,21 @@ void LevelScene::goUp()
         player->setPos(player->pos().x(), player->pos().y()-player->getmovement());
         if (mapA[x_tile][y_tile-1]==8)
         {
-            emit reachedOut();
+            player->teleport();
+
+            chargingTimer = new QTimer;
+            chargingTimer->setSingleShot(true);
+            connect(chargingTimer, SIGNAL(timeout()), this, SLOT(teleportUs()));
+            chargingTimer->start(1600);
         }
     }
+}
+
+void LevelScene::teleportUs()
+{
+    //delete chargingTimer;
+    emit reachedOut();
+
 }
 
 void LevelScene::goDown()
@@ -256,7 +275,12 @@ void LevelScene::goDown()
         player->setPos(player->pos().x(), player->pos().y()+player->getmovement());
         if (mapA[x_tile][y_tile+1]==8)
         {
-            emit reachedOut();
+            player->teleport();
+            chargingTimer = new QTimer;
+            chargingTimer->setSingleShot(true);
+            connect(chargingTimer, SIGNAL(timeout()), this, SLOT(teleportUs()));
+            chargingTimer->start(1600);
+
         }
     }
 }
@@ -274,7 +298,11 @@ void LevelScene::goLeft()
         player->setPos(player->pos().x()-player->getmovement(), player->pos().y());
         if (mapA[x_tile-1][y_tile]==8)
         {
-            emit reachedOut();
+            player->teleport();
+            chargingTimer = new QTimer;
+            chargingTimer->setSingleShot(true);
+            connect(chargingTimer, SIGNAL(timeout()), this, SLOT(teleportUs()));
+            chargingTimer->start(1600);
         }
     }
 }
@@ -292,13 +320,151 @@ void LevelScene::goRight()
         player->setPos(player->pos().x()+player->getmovement(), player->pos().y());
         if (mapA[x_tile+1][y_tile]==8)
         {
-            emit reachedOut();
+            player->teleport();
+            chargingTimer = new QTimer;
+            chargingTimer->setSingleShot(true);
+            connect(chargingTimer, SIGNAL(timeout()), this, SLOT(teleportUs()));
+            chargingTimer->start(1600);
+        }
+    }
+}
+
+void LevelScene::move()
+{
+    //set Random nb
+    QPixmap pixL = QPixmap(":/Assets/cyclopeL1.png");
+    QPixmap pixU = QPixmap(":/Assets/cyclopeUp.png");
+    QPixmap pixR = QPixmap(":/Assets/cyclopeR1.png");
+    QPixmap pixD = QPixmap(":/Assets/cyclopeDown.png");
+
+    if(!enemies.empty())
+    {
+        for (int i = 0; i<enemies.size(); i++)
+        {
+            int dir = rand() % 8;
+            int dis = rand() % 5;
+
+            int X = enemies[i]->pos().x();
+            int Y = enemies[i]->pos().y();
+
+            int width = enemies[i]->getlongueurE();
+            int height = enemies[i]->getlargeurE();
+
+            if ( Y<=96)
+            {
+                enemies[i]->setPos(X, sceneHeight*32 - 128);
+            }
+            else if ( X<=96)
+            {
+                enemies[i]->setPos(sceneWidth*32 -64, Y);
+            }
+
+            switch(dir) {
+              case 1:
+                if(Y <= 64){
+                    enemies[i]->setPos(X,Y+dis);
+                    enemies[i]->setPixmap(pixL);
+                }
+
+                break;
+              case 2:
+                if(Y <= 64){
+                    enemies[i]->setPos(X,Y+dis);
+                    enemies[i]->setPixmap(pixL);
+                }
+                else if(Y - width > sceneWidth){
+                    enemies[i]->setPos(X,Y-dis);
+                    enemies[i]->setPixmap(pixL);
+                }
+                break;
+              case 3:
+                if(Y <= 64){
+                    enemies[i]->setPos(X,Y+dis);
+                    enemies[i]->setPixmap(pixL);
+                }
+                else if(Y<=64 && X + width< sceneHeight){
+                  enemies[i]->setPos(X+dis,Y+dis);
+                  enemies[i]->setPixmap(pixL);
+                }
+              break;
+              case 4:
+                if(Y <= 64){
+                    enemies[i]->setPos(X,Y+dis);
+                    enemies[i]->setPixmap(pixL);
+                }
+               else if(Y - width > sceneWidth && X + height <sceneHeight){
+                   enemies[i]->setPos(X+dis,Y-dis);
+                   enemies[i]->setPixmap(pixD);
+               }
+              break;
+              case 5:
+                if(Y <= 64){
+                    enemies[i]->setPos(X,Y+dis);
+                    enemies[i]->setPixmap(pixL);
+                }
+                else if(Y <=64 && X+width <sceneWidth){
+                    enemies[i]->setPos(X-dis,Y+dis);
+                    enemies[i]->setPixmap(pixD);
+                }
+              break;
+              case 6:
+                if(Y <= 64){
+                    enemies[i]->setPos(X,Y+dis);
+                    enemies[i]->setPixmap(pixL);
+                }
+                else if(Y  +height >= (sceneHeight-64) && X>=64){
+                    enemies[i]->setPos(X-dis,Y-dis);
+                    enemies[i]->setPixmap(pixD);
+                }
+              break;
+              case 7:
+                if(Y <= 64){
+                    enemies[i]->setPos(X,Y+dis);
+                    enemies[i]->setPixmap(pixL);
+                }
+                else if(X+ height < sceneHeight){
+                    enemies[i]->setPos(X+dis,Y);
+                    enemies[i]->setPixmap(pixD);
+                }
+              break;
+              case 8:
+                if(Y <= 64){
+                    enemies[i]->setPos(X,Y+dis);
+                    enemies[i]->setPixmap(pixL);
+                }
+                else if(X>0){
+                    enemies[i]->setPos(X-dis,Y);
+                    enemies[i]->setPixmap(pixU);
+                }
+              break;
+              default:
+                 enemies[i]->setPos(X,Y);
+                 enemies[i]->setPixmap(pixU);
+            }
         }
     }
 }
 
 void LevelScene::spawn(){
-    enemy * mechant = new enemy();
-    this->addItem(mechant);
+    enemy *mechant = new enemy();
+    enemies.append(mechant);
+    this->addItem(enemies.last());
+    QObject::connect(enemies.last(), SIGNAL(killEnemy()), this, SLOT(killTarget()));
+}
+
+void LevelScene::killTarget(){
+    for (int i = 0; i<enemies.size(); ++i)
+    {
+        if (sqrt(pow(enemies[i]->pos().x()-player->pos().x(), 2) + pow(enemies[i]->pos().y()-player->pos().y(), 2))<= 100 )
+        {
+            enemies[i]->destroy();
+
+            int index = enemies.indexOf(enemies[i]);
+            qDebug()<<index;
+            //this->removeItem(enemies[index]);
+            enemies.removeAt(index);
+
+        }
+    }
 }
 

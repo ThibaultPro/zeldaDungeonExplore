@@ -4,7 +4,7 @@
 #include "levelscene.h"
 
 #include <QObject>
-
+#include <QSequentialAnimationGroup>
 
 class Player: public PixmapItem
 {
@@ -22,16 +22,21 @@ public:
     int getlargeur() const { return this->largeur; } // définition au sein de la classe
     void setlargeur(int largeur);
 
+public slots:
+    void teleport();
+
 signals:
     void goRight();
     void goLeft();
     void goUp();
     void goDown();
+    void generateScene();
 
 private:
     int movement ;
     int largeur ;
     int longueur ;
+    QSequentialAnimationGroup * teleportationAnimation;
 };
 
 inline void Player::setmovement(int movement) // définition au sein de la classe (inline)

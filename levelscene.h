@@ -5,11 +5,16 @@
 #include <QWidget>
 #include <iostream>
 #include <vector>
+#include <QList>
 
 #include "player.h"
 #include "pixmapitem.h"
+#include "enemy.h"
 
 using namespace std;
+
+class enemy;
+
 class LevelScene : public QGraphicsScene
 {
     Q_OBJECT
@@ -24,6 +29,9 @@ public:
 
 public slots:
     void spawn();
+    void move();
+    void killTarget();
+    void teleportUs();
 
 signals:
     void reachedOut();
@@ -35,13 +43,15 @@ public slots:
     void goRight();
 
 private:
-    int *currentLevel;
+    int currentLevel;
     int sceneWidth;
     int sceneHeight;
     vector<vector<int>> mapA;
     QPoint teleporterOut;
     QPoint teleporterBack;
     Player *player;
+    QList<enemy*> enemies;
+    QTimer *chargingTimer;
 };
 
 #endif // LEVELSCENE_H

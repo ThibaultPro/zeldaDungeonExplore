@@ -12,16 +12,18 @@ class QSlider;
 class QToolButton;
 QT_END_NAMESPACE
 
+class GraphicsView;
 class View;
+
 
 class GraphicsView: public QGraphicsView
 {
-
 public:
     GraphicsView(View *v) : QGraphicsView(), view(v) { }
 
 protected:
     void wheelEvent(QWheelEvent *) override;
+    void mouseMoveEvent(QMouseEvent *e) override;
 
 private:
     View *view;
@@ -39,6 +41,7 @@ public slots:
     void xValueChanged(int value);
     void yValueChanged(int value);
 
+
 private slots:
     void resetView();
     void setResetButtonEnabled();
@@ -49,6 +52,7 @@ private slots:
     void print();
     void rotateLeft();
     void rotateRight();
+
 
 private:
     GraphicsView *graphicsView;

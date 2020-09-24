@@ -45,12 +45,12 @@ void DungeonGenerator::createLevel()
 
     generatePerlinNoise(nOutputWidth, nOutputHeight,fNoiseSeed2D, nOctaveCount, fScalingBias, fPerlinNoise2D);
 
-    carreauImg = cv::imread("Assets/carreau.png");
-    carreau2Img = cv::imread("Assets/carreau2.png");
-    waterImg = cv::imread("Assets/watero.png");
-    grassImg = cv::imread("Assets/grassTile.png");
-    highGrass = cv::imread("Assets/grass.png");
-    montainImg = cv::imread("Assets/mont.png");
+    carreauImg = cv::imread("Assets/carreau.png", IMREAD_COLOR);
+    carreau2Img = cv::imread("Assets/carreau2.png",  IMREAD_COLOR);
+    waterImg = cv::imread("Assets/watero.png",  IMREAD_COLOR);
+    grassImg = cv::imread("Assets/grassTile.png",  IMREAD_COLOR);
+    highGrass = cv::imread("Assets/grass.png",  IMREAD_COLOR);
+    montainImg = cv::imread("Assets/mont.png",  IMREAD_COLOR);
 
     int sceneWidth = nOutputWidth*waterImg.rows;
     int sceneHeight = nOutputHeight*waterImg.cols;
@@ -201,6 +201,7 @@ void DungeonGenerator::createLevel()
 
     QObject::connect(levels.last(), SIGNAL(reachedOut()), this, SLOT(createLevel()));
 
+
     view->view()->setScene(levels.last());
     view->show();
 }
@@ -244,8 +245,8 @@ void DungeonGenerator::generatePerlinNoise(int nOutputWidth, int nOutputHeight, 
 
 QImage DungeonGenerator::Mat2QImage(cv::Mat const& src)
 {
-     cv::Mat temp; // make the same cv::Mat
-     cvtColor(src, temp,4); // cvtColor Makes a copt, that what i need
+     cv::Mat temp; //make the same cv::Mat
+     cv::cvtColor(src, temp, 4); //cvtColor Makes a copt, that what i need
      QImage dest((const uchar *) temp.data, temp.cols, temp.rows, temp.step, QImage::Format_RGB888);
      dest.bits(); // enforce deep copy, see documentation
      // of QImage::QImage ( const uchar * data, int width, int height, Format format )
