@@ -105,7 +105,6 @@ View::View(const QString &name, QWidget *parent) : QFrame(parent)
     connect(zoomSlider, &QAbstractSlider::valueChanged, this, &View::setupMatrix);
 
     setupMatrix();
-
 }
 
 QGraphicsView *View::view() const
@@ -156,7 +155,7 @@ void View::zoomIn(int level)
 
 void View::zoomOut(int level)
 {
-    if((zoomSlider->value() - level)>=202)
+    if((zoomSlider->value() - level)>=200)
     {
         zoomSlider->setValue(zoomSlider->value() - level);
     }

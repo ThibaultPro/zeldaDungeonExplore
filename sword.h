@@ -17,8 +17,10 @@ public:
 
     int getlargeurEpee() const { return this->largeurEpee; } // définition au sein de la classe
     void setlargeurEpee(int largeurEpee);
+
 public slots:
     void hit();
+
 private:
     int longeurEpee ;
     int largeurEpee ;

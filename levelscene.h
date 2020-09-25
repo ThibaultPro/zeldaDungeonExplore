@@ -43,6 +43,7 @@ public slots:
     void goRight();
 
 private:
+    bool reached=false;
     int currentLevel;
     int sceneWidth;
     int sceneHeight;

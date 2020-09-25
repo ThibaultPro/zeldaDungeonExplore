@@ -258,7 +258,11 @@ void LevelScene::goUp()
 void LevelScene::teleportUs()
 {
     //delete chargingTimer;
-    emit reachedOut();
+    if(!reached)
+    {
+        emit reachedOut();
+    }
+    reached = true;
 
 }
 

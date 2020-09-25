@@ -45,12 +45,12 @@ void DungeonGenerator::createLevel()
 
     generatePerlinNoise(nOutputWidth, nOutputHeight,fNoiseSeed2D, nOctaveCount, fScalingBias, fPerlinNoise2D);
 
-    carreauImg = cv::imread("Assets/carreau.png", IMREAD_COLOR);
-    carreau2Img = cv::imread("Assets/carreau2.png",  IMREAD_COLOR);
-    waterImg = cv::imread("Assets/watero.png",  IMREAD_COLOR);
-    grassImg = cv::imread("Assets/grassTile.png",  IMREAD_COLOR);
-    highGrass = cv::imread("Assets/grass.png",  IMREAD_COLOR);
-    montainImg = cv::imread("Assets/mont.png",  IMREAD_COLOR);
+    carreauImg = cv::imread("Assets/carreau.png");
+    carreau2Img = cv::imread("Assets/carreau2.png");
+    waterImg = cv::imread("Assets/watero.png");
+    grassImg = cv::imread("Assets/grassTile.png");
+    highGrass = cv::imread("Assets/grass.png");
+    montainImg = cv::imread("Assets/mont.png");
 
     int sceneWidth = nOutputWidth*waterImg.rows;
     int sceneHeight = nOutputHeight*waterImg.cols;
