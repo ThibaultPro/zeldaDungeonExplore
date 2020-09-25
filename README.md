@@ -16,5 +16,6 @@ Here  is what final result should look like :
 ![](github_video.gif)
 
 
+The game uses procedural map generation to create always more levels. See how many teleporters you can take, the exploration is limitless!
 
-Have fun exploring the game!
+Have fun with the game!
