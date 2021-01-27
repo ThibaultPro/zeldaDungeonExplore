@@ -7,7 +7,7 @@ The Game was developed using Qt 5.15 and opencv4
 We experienced some trouble with opencv functions when building the project on mac. 
 
 If you plan to build it yourself and don't have opencv installed, we recommend you this tutorial to install opencv 4 and integrate it to a Qt application: 
-http://acbnow.com/2020/09/procedural-generation-with-opencv4-and-qt/
+
 
 Once installed, uncheck "shadow build" in your build settings to prevent errors from happening during build process. 
 
